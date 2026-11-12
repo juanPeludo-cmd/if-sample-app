@@ -1,0 +1,35 @@
+[
+  {
+    "id": "INC-7",
+    "title": "Invoice totals off by one cent",
+    "severity": "SEV3",
+    "summary": "Some invoice totals were one cent short after the late fee was added.",
+    "root_cause": "late_fee rounded with float arithmetic before ADR-0002; fixed with Decimal quantize.",
+    "paths": [
+      "app/invoices.py"
+    ],
+    "started_at": "2026-09-14T10:00:00Z"
+  },
+  {
+    "id": "INC-12",
+    "title": "Disputed invoice sent a final notice",
+    "severity": "SEV3",
+    "summary": "A customer with a disputed invoice received a final notice instead of a hold.",
+    "root_cause": "dunning_level in app/dunning.py checked days late before the dispute flag; the nested branches made the order hard to see in review. Fixed by checking the dispute first.",
+    "paths": [
+      "app/dunning.py"
+    ],
+    "started_at": "2026-10-20T08:30:00Z"
+  },
+  {
+    "id": "INC-15",
+    "title": "Customer balance page slow at month end",
+    "severity": "SEV3",
+    "summary": "The balance page took several seconds for every customer on the first working day of the month, when finance staff all open it at once.",
+    "root_cause": "Not found. The page calls GET /ledger/{customer_id}/balance; the database was idle, so the time is spent in the app. Closed without a fix.",
+    "paths": [
+      "app/ledger.py"
+    ],
+    "started_at": "2026-11-02T08:15:00Z"
+  }
+]

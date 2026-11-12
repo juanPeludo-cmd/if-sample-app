@@ -1,0 +1,69 @@
+[
+  {
+    "key": "STORY-101",
+    "type": "story",
+    "title": "Late-payment fee on overdue invoices",
+    "description": "As finance, I want a late fee added to invoices that are paid late, so that late payment is discouraged. 1.5% per 30 days, capped at 10%. Show it in read_invoice.",
+    "status": "Ready",
+    "paths": [
+      "app/invoices.py"
+    ],
+    "labels": [
+      "billing"
+    ],
+    "updated_at": "2026-11-01T09:00:00Z"
+  },
+  {
+    "key": "STORY-102",
+    "type": "story",
+    "title": "Show net pay in the payroll run summary",
+    "description": "The payroll run should report total net pay after tax using net_pay.",
+    "status": "Backlog",
+    "paths": [
+      "app/payroll/service.py"
+    ],
+    "updated_at": "2026-11-02T09:00:00Z"
+  },
+  {
+    "key": "STORY-201",
+    "type": "story",
+    "title": "Reminder fee for overdue invoices",
+    "description": "Finance wants a fixed reminder fee on overdue invoices: none for the first 14 days late, 5.00 from 15 days, 10.00 from 45 days. Computed by reminder_fee in app/invoices.py.",
+    "status": "Ready",
+    "paths": [
+      "app/invoices.py"
+    ],
+    "labels": [
+      "billing"
+    ],
+    "updated_at": "2026-11-05T09:00:00Z"
+  },
+  {
+    "key": "STORY-202",
+    "type": "story",
+    "title": "Holiday pay in payroll",
+    "description": "Payroll needs holiday pay: gross pay divided by 260 working days, times the holiday days taken, rounded to the cent. Computed by holiday_pay in app/payroll/service.py.",
+    "status": "Ready",
+    "paths": [
+      "app/payroll/service.py"
+    ],
+    "labels": [
+      "payroll"
+    ],
+    "updated_at": "2026-11-05T09:00:00Z"
+  },
+  {
+    "key": "STORY-203",
+    "type": "story",
+    "title": "Partner API keys from the X-API-Key header, compared in constant time",
+    "description": "Security review: partner keys must be read from the X-API-Key header and compared in constant time, and empty keys must never match. check_key in app/auth/keys.py takes the request headers.",
+    "status": "Ready",
+    "paths": [
+      "app/auth/keys.py"
+    ],
+    "labels": [
+      "security"
+    ],
+    "updated_at": "2026-11-05T09:00:00Z"
+  }
+]

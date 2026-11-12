@@ -1,0 +1,13 @@
+{
+  "enabledMcpjsonServers": ["intelligent-flow"],
+  "permissions": {
+    "allow": [
+      "mcp__intelligent-flow__get_context",
+      "mcp__intelligent-flow__get_run",
+      "mcp__intelligent-flow__get_evidence",
+      "mcp__intelligent-flow__list_approvals",
+      "mcp__intelligent-flow__list_agents",
+      "mcp__intelligent-flow__policy_decide"
+    ]
+  }
+}

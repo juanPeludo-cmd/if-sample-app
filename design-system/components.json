@@ -1,0 +1,13 @@
+{
+  "_comment": "The sample-app design system: the only components UI code may use, with their props. A prop is a fixed value from `values`, a `token` of the named group, `text`, or a `binding` to the component's own props ({invoice.total}). An `action` names an API operation by its operationId.",
+  "package": "@sample/design-system",
+  "components": {
+    "Panel": {"children": true, "props": {"title": {"kind": "text"}, "tone": {"kind": "values", "values": ["neutral", "warning", "danger"]}}},
+    "Stack": {"children": true, "props": {"direction": {"kind": "values", "values": ["vertical", "horizontal"]}, "gap": {"kind": "token", "group": "space"}}},
+    "Text": {"children": false, "props": {"text": {"kind": "text"}, "variant": {"kind": "values", "values": ["body", "caption", "label"]}, "tone": {"kind": "values", "values": ["default", "muted"]}}},
+    "KeyValue": {"children": false, "props": {"label": {"kind": "text"}, "value": {"kind": "binding"}}},
+    "Money": {"children": false, "props": {"label": {"kind": "text"}, "amount": {"kind": "binding"}, "currency": {"kind": "values", "values": ["EUR"]}}},
+    "Badge": {"children": false, "props": {"label": {"kind": "text"}, "tone": {"kind": "values", "values": ["neutral", "warning", "danger", "success"]}}},
+    "Button": {"children": false, "props": {"label": {"kind": "text"}, "variant": {"kind": "values", "values": ["primary", "secondary"]}, "action": {"kind": "action"}}}
+  }
+}

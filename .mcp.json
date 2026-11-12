@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "intelligent-flow": {
+      "type": "stdio",
+      "command": "docker",
+      "args": ["exec", "-i", "-e", "IF_USER=engineer", "intelligent-flow-api-1", "iflow-mcp"],
+      "tools": ["*"]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+# CI for juanPeludo-cmd/if-sample-app (ADR-0008): runs on every pull request Intelligent Flow
+# opens and on main. Its job is named "test", the check config/remotes.toml requires: a
+# failing run refuses the change's approval (E7_CHECKS_FAILED) and the merge (E14).
+# Added to the repository by a person (scripts/seed-github-repo.sh), never by an agent:
+# Intelligent Flow's token has no Workflows permission.
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # the app's own locked dependencies, hash-checked; pytest as the sandbox pins it
+      - run: python -m pip install --require-hashes --no-deps -r requirements.lock
+      - run: python -m pip install pytest==8.4.2
+      - run: python -m pytest -q

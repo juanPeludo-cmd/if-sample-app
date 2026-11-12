@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="pytest" tests="4" failures="1" errors="0" skipped="0">
+    <testcase classname="tests.test_invoices" name="test_late_fee_is_zero_when_on_time" time="0.001"/>
+    <testcase classname="tests.test_invoices" name="test_late_fee" time="0.001"/>
+    <testcase classname="tests.test_invoices" name="test_late_fee_is_capped" time="0.002">
+      <failure message="assert Decimal('6.00') == Decimal('10.00')">cap not applied</failure>
+    </testcase>
+    <testcase classname="tests.test_payroll" name="test_net_pay" time="0.001"/>
+  </testsuite>
+</testsuites>
