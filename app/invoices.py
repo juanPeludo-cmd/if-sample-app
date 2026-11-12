@@ -6,6 +6,7 @@ from fastapi import APIRouter, HTTPException
 
 from app.db import get_session
 from app.models import Invoice
+from app.late_fee import late_fee_settings
 
 router = APIRouter(prefix="/invoices")
 
@@ -14,7 +15,6 @@ LATE_FEE_CAP = Decimal("0.10")
 
 
 def late_fee(amount: Decimal, days_late: int) -> Decimal:
-    """1.5% of the amount per started 30 days late, capped at 10%."""
     periods = -(-days_late // 30) if days_late > 0 else 0
     rate = min(LATE_FEE_RATE * periods, LATE_FEE_CAP)
     return (amount * rate).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
