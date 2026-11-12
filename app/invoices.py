@@ -51,3 +51,14 @@ def read_invoice(invoice_id: int) -> dict[str, str]:
     if invoice is None:
         raise HTTPException(404)
     return {"id": str(invoice.id), "total": str(invoice_total(invoice))}
+
+
+def reminder_fee(days_late: int) -> Decimal:
+    if days_late < 0:
+        raise ValueError("days_late cannot be negative")
+    if days_late <= 14:
+        return Decimal("0.00")
+    elif days_late <= 44:
+        return Decimal("5.00")
+    else:
+        return Decimal("10.00")
