@@ -44,3 +44,11 @@ def holiday_pay(gross: Decimal, days: int) -> Decimal:
     if days == 0:
         return Decimal("0.00")
     return (gross * days / Decimal("260")).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+
+
+def overtime_pay(hourly: Decimal, hours: int) -> Decimal:
+    if hours < 0:
+        raise ValueError("Number of hours cannot be negative")
+    if hours == 0:
+        return Decimal("0.00")
+    return (hourly * hours * Decimal("1.5")).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
