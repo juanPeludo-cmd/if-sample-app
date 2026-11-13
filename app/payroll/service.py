@@ -6,6 +6,7 @@ from fastapi import APIRouter, HTTPException
 
 from app.db import get_session
 from app.models import PayrollEntry
+from decimal import ROUND_HALF_UP
 
 router = APIRouter(prefix="/payroll")
 
@@ -35,3 +36,11 @@ def read_holiday_pay(gross: Decimal, days: int) -> dict[str, str]:
         return {"gross": str(gross), "days": str(days), "holiday_pay": str(pay(gross, days))}
     except ValueError as exc:
         raise HTTPException(400, str(exc)) from exc
+
+
+def holiday_pay(gross: Decimal, days: int) -> Decimal:
+    if days < 0:
+        raise ValueError("Number of days cannot be negative")
+    if days == 0:
+        return Decimal("0.00")
+    return (gross * days / Decimal("260")).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
