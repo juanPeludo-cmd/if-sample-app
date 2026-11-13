@@ -27,3 +27,5 @@ public functions and never reads their tables or secrets directly (ADR-0003).
 
 An endpoint or public function keeps its existing callers working: new parameters get
 defaults, and a breaking change needs a new name or version, plus a note in the ADR.
+
+Reviewed by the team on 2026-11-13.
